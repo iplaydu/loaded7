@@ -447,11 +447,6 @@
         echo '<img src="../includes/work/qr-' . $_SESSION['admin']['id'] . '.png" />';
       ?>
       </div>
-      <script>
-        $('#qrcode-tooltip').menuTooltip($('#qrcode-content-block').hide(), {
-            classes: ['anthracite-gradient', 'with-small-padding']
-        });
-      </script>
       <!-- QR Code EOF -->
         <p class="w-mark"></p>
       </footer>      
@@ -502,6 +497,11 @@
   <script src="templates/default/js/confirm.js"></script>
   <!-- script src="templates/default/js/agenda.js"></script -->
   <script src="templates/default/js/tabs.js"></script>    <!-- Must be loaded last -->
+  <script>
+    $('#qrcode-tooltip').menuTooltip($('#qrcode-content-block').hide(), {
+        classes: ['anthracite-gradient', 'with-small-padding']
+    });
+  </script>
   <!-- Load page specific javascript -->
   <?php $lC_Template->loadPageScript($lC_Template->getModule()); ?>
 </body>
