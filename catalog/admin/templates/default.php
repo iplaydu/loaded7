@@ -438,9 +438,21 @@
       </div>
       
       <footer id="menu-footer">
-        <?php $BarcodeQR->url(HTTP_SERVER . $_SERVER['REQUEST_URI']); ?>
-        <?php $BarcodeQR->draw(230, "../includes/work/qr-tmp.png"); ?>
-        <img src="../includes/work/qr-tmp.png" />
+      <!-- QR Code -->
+      <a id="qrcode-tooltip"><img src="../images/icons/qr-icon.png" border="0" class="Click to Generate QR Code" /></a>
+      <div id="qrcode-content-block">
+      <?php 
+        $BarcodeQR->url((($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . $_SERVER['REQUEST_URI'] . '&' . $lC_Session->getName() . '=' . $lC_Session->getID());
+        $BarcodeQR->draw(230, '../includes/work/qr-' . $_SESSION['admin']['id'] . '.png');
+        echo '<img src="../includes/work/qr-' . $_SESSION['admin']['id'] . '.png" />';
+      ?>
+      </div>
+      <script>
+        $('#qrcode-tooltip').menuTooltip($('#qrcode-content-block').hide(), {
+            classes: ['anthracite-gradient', 'with-small-padding']
+        });
+      </script>
+      <!-- QR Code EOF -->
         <p class="w-mark"></p>
       </footer>      
     </section>
